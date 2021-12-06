@@ -1,0 +1,28 @@
+---
+title: "An Analysis of Cricket Chirps"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(tidyverse)
+
+crickets3 <- read_csv("crickets3.csv")
+```
+
+#Does the rate at which crickets chirp change throughout their call?
+
+```{r}
+
+ggplot(data = crickets3, mapping = aes(x = factor(time_point), y = chirp_rate, color = factor(cricket_id))) +
+  geom_point() +
+  geom_line(aes(group = cricket_id),color="grey") +
+  labs(title = "Chirp Rate Throughout Calling", x = "Time Point", y = "Chirp Rate (s)", color = "Cricket ID")
+
+```
+
+
